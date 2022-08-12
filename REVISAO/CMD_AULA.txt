@@ -1,0 +1,304 @@
+Microsoft Windows [versão 10.0.19043.1165]
+(c) Microsoft Corporation. Todos os direitos reservados.
+
+C:\Users\Alunos>cd c\xampp\mysql\bin
+O sistema não pode encontrar o caminho especificado.
+
+C:\Users\Alunos>cd c: \xampp\mysql\bin
+O sistema não pode encontrar o caminho especificado.
+
+C:\Users\Alunos>cd c:\xampp\mysql\bin
+
+c:\xampp\mysql\bin>mysql -u root
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 38
+Server version: 10.4.17-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show tables
+    -> ;
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| revisao            |
+| test               |
++--------------------+
+6 rows in set (0.001 sec)
+
+MariaDB [(none)]> use revisao;
+Database changed
+MariaDB [revisao]> show tables;
++-------------------+
+| Tables_in_revisao |
++-------------------+
+| clientes          |
+| compras           |
+| produtos          |
++-------------------+
+3 rows in set (0.001 sec)
+
+MariaDB [revisao]> describe clientes;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| nome_cliente | varchar(255) | YES  |     | NULL    |                |
+| email        | varchar(255) | YES  |     | NULL    |                |
+| estado       | varchar(2)   | YES  |     | NULL    |                |
+| id_cliente   | int(11)      | NO   | PRI | NULL    | auto_increment |
++--------------+--------------+------+-----+---------+----------------+
+4 rows in set (0.020 sec)
+
+MariaDB [revisao]> insert into clientes(nome_clientes,email,estado)
+    -> values('ETEC MCM', 'ETECMCM@EMAIL.COM', 'SP');
+ERROR 1054 (42S22): Unknown column 'nome_clientes' in 'field list'
+MariaDB [revisao]> SELECT * FROM CLIENTES:
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ':' at line 1
+MariaDB [revisao]> SELECT * FROM CLIENTS;
+ERROR 1146 (42S02): Table 'revisao.clients' doesn't exist
+MariaDB [revisao]> SELECT * FROM CLIENTES;
+Empty set (0.001 sec)
+
+MariaDB [revisao]>  SELECT * FROM CLIENTES;
+Empty set (0.000 sec)
+
+MariaDB [revisao]> insert into clientes(nome_clientes,email,estado)
+    -> VALUES('ETEC MCM','ETECMCM@EMAIL.COM','SP');
+ERROR 1054 (42S22): Unknown column 'nome_clientes' in 'field list'
+MariaDB [revisao]> insert into clientes(nome_cliente,email,estado)
+    -> VALUES('ETEC MCM','ETECMCM@EMAIL.COM','SP');
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [revisao]>  SELECT * FROM CLIENTES;
++--------------+-------------------+--------+------------+
+| nome_cliente | email             | estado | id_cliente |
++--------------+-------------------+--------+------------+
+| ETEC MCM     | ETECMCM@EMAIL.COM | SP     |          1 |
++--------------+-------------------+--------+------------+
+1 row in set (0.001 sec)
+
+MariaDB [revisao]> insert into clientes(nome_cliente,email,estado)
+    -> VALUES('ETEC Maua','ETECMaua@EMAIL.COM','SP'),
+    -> ('ETEC RIO GRANDE DA SERRA','ETECRIOGRANDE@EMAIL.COM','RJ');
+Query OK, 2 rows affected (0.010 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+MariaDB [revisao]>  SELECT * FROM CLIENTES;
++--------------------------+-------------------------+--------+------------+
+| nome_cliente             | email                   | estado | id_cliente |
++--------------------------+-------------------------+--------+------------+
+| ETEC MCM                 | ETECMCM@EMAIL.COM       | SP     |          1 |
+| ETEC Maua                | ETECMaua@EMAIL.COM      | SP     |          2 |
+| ETEC RIO GRANDE DA SERRA | ETECRIOGRANDE@EMAIL.COM | RJ     |          3 |
++--------------------------+-------------------------+--------+------------+
+3 rows in set (0.000 sec)
+
+MariaDB [revisao]>
+MariaDB [revisao]> MariaDB [revisao]>  SELECT * FROM CLIENTES;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'MariaDB [revisao]>  SELECT * FROM CLIENTES' at line 1
+MariaDB [revisao]> Empty set (0.000 sec)
+    ->
+    -> MariaDB [revisao]> insert into clientes(nome_clientes,email,estado)
+    ->     -> VALUES('ETEC MCM','ETECMCM@EMAIL.COM','SP');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Empty set (0.000 sec)
+
+MariaDB [revisao]> insert into clientes(nome_clientes,...' at line 1
+MariaDB [revisao]> ERROR 1054 (42S22): Unknown column 'nome_clientes' in 'field list'
+    -> MariaDB [revisao]> insert into clientes(nome_cliente,email,estado)
+    ->     -> VALUES('ETEC MCM','ETECMCM@EMAIL.COM','SP');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ERROR 1054 (42S22): Unknown column 'nome_clientes' in 'field list'
+MariaDB [r...' at line 1
+MariaDB [revisao]> Query OK, 1 row affected (0.003 sec)
+    ->
+    -> MariaDB [revisao]>  SELECT * FROM CLIENTES;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Query OK, 1 row affected (0.003 sec)
+
+MariaDB [revisao]>  SELECT * FROM CLIENTES' at line 1
+MariaDB [revisao]> +--------------+-------------------+--------+------------+
+    -> | nome_cliente | email             | estado | id_cliente |
+    -> +--------------+-------------------+--------+------------+
+    -> | ETEC MCM     | ETECMCM@EMAIL.COM | SP     |          1 |
+    -> +--------------+-------------------+--------+------------+
+    -> 1 row in set (0.001 sec)
+    ->
+    -> MariaDB [revisao]> insert into clientes(nome_cliente,email,estado)
+    ->     -> VALUES('ETEC Maua','ETECMaua@EMAIL.COM','SP'),
+    ->     -> ('ETEC RIO GRANDE DA SERRA','ETECRIOGRANDE@EMAIL.COM','RJ');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '+--------------+-------------------+--------+------------+
+| nome_cliente | e...' at line 1
+MariaDB [revisao]> Query OK, 2 rows affected (0.010 sec)
+    -> Records: 2  Duplicates: 0  Warnings: 0
+    ->
+    -> MariaDB [revisao]>  SELECT * FROM CLIENTES;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Query OK, 2 rows affected (0.010 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+...' at line 1
+MariaDB [revisao]> +--------------------------+-------------------------+--------+------------+
+    -> | nome_cliente             | email                   | estado | id_cliente |
+    -> +--------------------------+-------------------------+--------+------------+
+    -> | ETEC MCM                 | ETECMCM@EMAIL.COM       | SP     |          1 |
+    -> | ETEC Maua                | ETECMaua@EMAIL.COM      | SP     |          2 |
+    -> | ETEC RIO GRANDE DA SERRA | ETECRIOGRANDE@EMAIL.COM | RJ     |          3 |
+    -> +--------------------------+-------------------------+--------+------------+
+    -> 3 rows in set (0.000 sec)
+    ->
+    -> MariaDB [revisao]>
+    -> MariaDB [revisao]>  SELECT * FROM CLIENTES;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '+--------------------------+-------------------------+--------+------------+
+...' at line 1
+MariaDB [revisao]> Empty set (0.000 sec)
+    ->
+    -> MariaDB [revisao]> insert into clientes(nome_clientes,email,estado)
+    ->     -> VALUES('ETEC MCM','ETECMCM@EMAIL.COM','SP');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Empty set (0.000 sec)
+
+MariaDB [revisao]> insert into clientes(nome_clientes,...' at line 1
+MariaDB [revisao]> ERROR 1054 (42S22): Unknown column 'nome_clientes' in 'field list'
+    -> MariaDB [revisao]> insert into clientes(nome_cliente,email,estado)
+    ->     -> VALUES('ETEC MCM','ETECMCM@EMAIL.COM','SP');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ERROR 1054 (42S22): Unknown column 'nome_clientes' in 'field list'
+MariaDB [r...' at line 1
+MariaDB [revisao]> Query OK, 1 row affected (0.003 sec)
+    ->
+    -> MariaDB [revisao]>  SELECT * FROM CLIENTES;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Query OK, 1 row affected (0.003 sec)
+
+MariaDB [revisao]>  SELECT * FROM CLIENTES' at line 1
+MariaDB [revisao]> +--------------+-------------------+--------+------------+
+    -> | nome_cliente | email             | estado | id_cliente |
+    -> +--------------+-------------------+--------+------------+
+    -> | ETEC MCM     | ETECMCM@EMAIL.COM | SP     |          1 |
+    -> +--------------+-------------------+--------+------------+
+    -> 1 row in set (0.001 sec)
+    ->
+    -> MariaDB [revisao]> insert into clientes(nome_cliente,email,estado)
+    ->     -> VALUES('ETEC Maua','ETECMaua@EMAIL.COM','SP'),
+    ->     -> ('ETEC RIO GRANDE DA SERRA','ETECRIOGRANDE@EMAIL.COM','RJ');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '+--------------+-------------------+--------+------------+
+| nome_cliente | e...' at line 1
+MariaDB [revisao]> Query OK, 2 rows affected (0.010 sec)
+    -> Records: 2  Duplicates: 0  Warnings: 0
+    ->
+    -> MariaDB [revisao]>  SELECT * FROM CLIENTES;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Query OK, 2 rows affected (0.010 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+...' at line 1
+MariaDB [revisao]> +--------------------------+-------------------------+--------+------------+
+    -> | nome_cliente             | email                   | estado | id_cliente |
+    -> +--------------------------+-------------------------+--------+------------+
+    -> | ETEC MCM                 | ETECMCM@EMAIL.COM       | SP     |          1 |
+    -> | ETEC Maua                | ETECMaua@EMAIL.COM      | SP     |          2 |
+    -> | ETEC RIO GRANDE DA SERRA | ETECRIOGRANDE@EMAIL.COM | RJ     |          3 |
+    -> +--------------------------+-------------------------+--------+------------+
+    -> 3 rows in set (0.000 sec)
+    ->
+    -> MariaDB [revisao]>
+    -> MariaDB [revisao]>  SELECT * FROM CLIENTES;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '+--------------------------+-------------------------+--------+------------+
+...' at line 1
+MariaDB [revisao]> Empty set (0.000 sec)
+    ->
+    -> MariaDB [revisao]> insert into clientes(nome_clientes,email,estado)
+    ->     -> VALUES('ETEC MCM','ETECMCM@EMAIL.COM','SP');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Empty set (0.000 sec)
+
+MariaDB [revisao]> insert into clientes(nome_clientes,...' at line 1
+MariaDB [revisao]> ERROR 1054 (42S22): Unknown column 'nome_clientes' in 'field list'
+    -> MariaDB [revisao]> insert into clientes(nome_cliente,email,estado)
+    ->     -> VALUES('ETEC MCM','ETECMCM@EMAIL.COM','SP');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ERROR 1054 (42S22): Unknown column 'nome_clientes' in 'field list'
+MariaDB [r...' at line 1
+MariaDB [revisao]> Query OK, 1 row affected (0.003 sec)
+    ->
+    -> MariaDB [revisao]>  SELECT * FROM CLIENTES;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Query OK, 1 row affected (0.003 sec)
+
+MariaDB [revisao]>  SELECT * FROM CLIENTES' at line 1
+MariaDB [revisao]> +--------------+-------------------+--------+------------+
+    -> | nome_cliente | email             | estado | id_cliente |
+    -> +--------------+-------------------+--------+------------+
+    -> | ETEC MCM     | ETECMCM@EMAIL.COM | SP     |          1 |
+    -> +--------------+-------------------+--------+------------+
+    -> 1 row in set (0.001 sec)
+    ->
+    -> MariaDB [revisao]> insert into clientes(nome_cliente,email,estado)
+    ->     -> VALUES('ETEC Maua','ETECMaua@EMAIL.COM','SP'),
+    ->     -> ('ETEC RIO GRANDE DA SERRA','ETECRIOGRANDE@EMAIL.COM','RJ');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '+--------------+-------------------+--------+------------+
+| nome_cliente | e...' at line 1
+MariaDB [revisao]> Query OK, 2 rows affected (0.010 sec)
+    -> Records: 2  Duplicates: 0  Warnings: 0
+    ->
+    -> MariaDB [revisao]>  SELECT * FROM CLIENTES;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Query OK, 2 rows affected (0.010 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+...' at line 1
+MariaDB [revisao]> +--------------------------+-------------------------+--------+------------+
+    -> | nome_cliente             | email                   | estado | id_cliente |
+    -> +--------------------------+-------------------------+--------+------------+
+    -> | ETEC MCM                 | ETECMCM@EMAIL.COM       | SP     |          1 |
+    -> | ETEC Maua                | ETECMaua@EMAIL.COM      | SP     |          2 |
+    -> | ETEC RIO GRANDE DA SERRA | ETECRIOGRANDE@EMAIL.COM | RJ     |          3 |
+    -> +--------------------------+-------------------------+--------+------------+
+    -> 3 rows in set (0.000 sec)
+    ->
+    -> MariaDB [revisao]>
+    -> MariaDB [revisao]>  SELECT * FROM CLIENTES;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '+--------------------------+-------------------------+--------+------------+
+...' at line 1
+MariaDB [revisao]> Empty set (0.000 sec)
+    ->
+    -> MariaDB [revisao]> insert into clientes(nome_clientes,email,estado)
+    ->     -> VALUES('ETEC MCM','ETECMCM@EMAIL.COM','SP');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Empty set (0.000 sec)
+
+MariaDB [revisao]> insert into clientes(nome_clientes,...' at line 1
+MariaDB [revisao]> ERROR 1054 (42S22): Unknown column 'nome_clientes' in 'field list'
+    -> MariaDB [revisao]> insert into clientes(nome_cliente,email,estado)
+    ->     -> VALUES('ETEC MCM','ETECMCM@EMAIL.COM','SP');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ERROR 1054 (42S22): Unknown column 'nome_clientes' in 'field list'
+MariaDB [r...' at line 1
+MariaDB [revisao]> Query OK, 1 row affected (0.003 sec)
+    ->
+    -> MariaDB [revisao]>  SELECT * FROM CLIENTES;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Query OK, 1 row affected (0.003 sec)
+
+MariaDB [revisao]>  SELECT * FROM CLIENTES' at line 1
+MariaDB [revisao]> +--------------+-------------------+--------+------------+
+    -> | nome_cliente | email             | estado | id_cliente |
+    -> +--------------+-------------------+--------+------------+
+    -> | ETEC MCM     | ETECMCM@EMAIL.COM | SP     |          1 |
+    -> +--------------+-------------------+--------+------------+
+    -> 1 row in set (0.001 sec)
+    ->
+    -> MariaDB [revisao]> insert into clientes(nome_cliente,email,estado)
+    ->     -> VALUES('ETEC Maua','ETECMaua@EMAIL.COM','SP'),
+    ->     -> ('ETEC RIO GRANDE DA SERRA','ETECRIOGRANDE@EMAIL.COM','RJ');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '+--------------+-------------------+--------+------------+
+| nome_cliente | e...' at line 1
+MariaDB [revisao]> Query OK, 2 rows affected (0.010 sec)
+    -> Records: 2  Duplicates: 0  Warnings: 0
+    ->
+    -> MariaDB [revisao]>  SELECT * FROM CLIENTES;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Query OK, 2 rows affected (0.010 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+...' at line 1
+MariaDB [revisao]> +--------------------------+-------------------------+--------+------------+
+    -> | nome_cliente             | email                   | estado | id_cliente |
+    -> +--------------------------+-------------------------+--------+------------+
+    -> | ETEC MCM                 | ETECMCM@EMAIL.COM       | SP     |          1 |
+    -> | ETEC Maua                | ETECMaua@EMAIL.COM      | SP     |          2 |
+    -> | ETEC RIO GRANDE DA SERRA | ETECRIOGRANDE@EMAIL.COM | RJ     |          3 |
+    -> +--------------------------+-------------------------+--------+------------+
+    -> 3 rows in set (0.000 sec)
+    ->
+    -> MariaDB [revisao]>
